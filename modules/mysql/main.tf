@@ -1,7 +1,7 @@
 # Determine the location of the database server and increase the security of the server
 resource "aws_db_subnet_group" "subnet_group" {
   name        = "${var.target_env}-rds-mssql-subnet-group"
-  subnet_ids  = var.database_subnets
+  subnet_ids  = [var.database_subnets]
 }
 
 # storage_encrypted to encrypte data in database 

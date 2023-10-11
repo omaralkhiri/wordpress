@@ -75,7 +75,7 @@ resource "aws_ecs_service" "wordpress_service" {
 
   network_configuration {
     security_groups = [aws_security_group.ecs_sg.id]
-    subnets         = var.subnet
+    subnets         = [var.subnet]
   }
 
   load_balancer {

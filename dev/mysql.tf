@@ -1,13 +1,3 @@
-# This method is used to obtain data from terraform.tfstate
-data "terraform_remote_state" "public_subnets_ids" {
-  backend = "s3"
-  config = {
-    bucket = "terraformstate"
-    key    = "terraform.tfstate"
-    region = "eu-central-1"
-  }
-}
-
 module "mysql" {
   source              = "../modules/mysql"
   db_name             = "wordpress"
@@ -18,7 +8,7 @@ module "mysql" {
   vpc_cidr            = var.vpc_cidr
   skip_final_snapshot = false
   target_env          = var.target_env
-  database_subnets    = data.terraform_remote_state.public_subnets_ids.outputs.public_subnets_ids
-  vpc_id              = data.terraform_remote_state.public_subnets_ids.outputs.vpc_id
+  database_subnets    = [module.network.pub-sub-1,module.network.pub-sub-2]
+  vpc_id              = module.network.vpc_id
   depends_on = [ module.network ]
 }
