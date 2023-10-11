@@ -3,7 +3,6 @@ variable "target_env" {}
 variable "region" {}
 variable "vpc_cidr" {}
 variable "image" {}
-variable "dbname" {}
 variable "key_name" {}
 variable "profile" {}
 variable "target_env" {}
@@ -15,3 +14,4 @@ variable "priv_sub1_cidr_block" {}
 variable "priv_sub2_cidr_block" {}
 variable "availability_zone_1" {}
 variable "availability_zone_2" {}
+variable "myip" {}

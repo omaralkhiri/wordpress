@@ -6,3 +6,5 @@ variable "dbname" {}
 variable "subnet" {}
 variable "target_group_arn" {}
 variable "mysql_url" {}
+variable "password" {}
+variable "username" {}

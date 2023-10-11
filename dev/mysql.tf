@@ -10,5 +10,6 @@ module "mysql" {
   target_env          = var.target_env
   database_subnets    = [module.network.pub-sub-1,module.network.pub-sub-2]
   vpc_id              = module.network.vpc_id
-  depends_on = [ module.network ]
+  myip                = var.myip
+  depends_on          = [ module.network ]
 }

@@ -20,3 +20,4 @@ variable "vpc_id" {}
 variable "target_env" {}
 variable "database_subnets" {}
 variable "skip_final_snapshot"{}
+variable "myip" {}

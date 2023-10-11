@@ -50,11 +50,11 @@ resource "aws_ecs_task_definition" "wordpress_task" {
       },
       {
         "name": "WORDPRESS_DB_USER",
-        "value": "mysql"
+        "value": "${var.username}"
       },
       {
         "name": "WORDPRESS_DB_PASSWORD",
-        "value": "lKpyyZfY7wmY7Faz0imzFFF"
+        "value": "${var.password}"
       },
       {
         "name": "WORDPRESS_DB_NAME",
