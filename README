@@ -1,0 +1,32 @@
+* Three-tier infrastructure architecture
+
+- The three tiers are:-
+
+1- Presentation Tier : is the top layer that interacts directly with users and handles the user experience.
+2- Application Tier : This tier processes and manages the application core functionality.
+3- Data Tier : is responsible for storing and managing the system data.
+
+
+
+* To deploy this infrastructure, please follow the following steps:-
+
+1- cd dev_network
+2- terraform init
+3- terraform plan
+4- terraform apply
+
+* After publishing (VPC, public subnet, private subnet, load Balance, internet gateway, nat gateway), please follow the following steps:
+
+1- cd ../dev
+2- terraform init
+3- terraform plan
+4- terraform apply
+
+
+* The most important decisions that were taken:-
+
+1- Protect data in docker containers when transporting them. (KMS)
+2- Protection in data transmission in the network. (route_table_association)
+3- Encrypt data in the database.
+4- Using variables in building infrastructure architecture in order to easily work on terraform files.
+5- 
