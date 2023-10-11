@@ -2,8 +2,8 @@
 data "terraform_remote_state" "public_subnets_ids" {
   backend = "s3"
   config = {
-    bucket = "DevWordpress"
-    key    = "vpc/terraform.tfstate"
+    bucket = "terraformstate"
+    key    = "terraform.tfstate"
     region = "eu-central-1"
   }
 }
@@ -20,4 +20,5 @@ module "mysql" {
   target_env          = var.target_env
   database_subnets    = data.terraform_remote_state.public_subnets_ids.outputs.public_subnets_ids
   vpc_id              = data.terraform_remote_state.public_subnets_ids.outputs.vpc_id
+  depends_on = [ module.network ]
 }

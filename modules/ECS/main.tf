@@ -83,6 +83,4 @@ resource "aws_ecs_service" "wordpress_service" {
     container_name   = "wordpress-service"
     container_port   = 80
   }
-
-    depends_on = [aws_db_instance.mysql]
 }

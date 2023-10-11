@@ -8,14 +8,9 @@
 
 
 
-* To deploy this infrastructure, please follow the following steps:-
+* please follow the following steps to pubishing resource:
 
-1- cd dev_network
-2- terraform init
-3- terraform plan
-4- terraform apply
-
-* After publishing (VPC, public subnet, private subnet, load Balance, internet gateway, nat gateway), please follow the following steps:
+- before following apply terraform, please create s3 bucket to set terraformstatus in bucket
 
 1- cd ../dev
 2- terraform init

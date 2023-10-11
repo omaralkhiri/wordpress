@@ -16,7 +16,6 @@ resource "aws_db_instance" "mysql" {
   identifier                    = var.identifier
   parameter_group_name          = "default.mysql5.7"
   publicly_accessible           = true
-  skip_final_snapshot       = "${var.skip_final_snapshot}"
   vpc_security_group_ids  = ["${aws_security_group.Security-RDS.id}"]
   db_subnet_group_name      = "${aws_db_subnet_group.subnet_group.id}"
   storage_encrypted = true
