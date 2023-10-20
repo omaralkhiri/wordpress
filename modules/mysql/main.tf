@@ -4,6 +4,13 @@ resource "aws_db_subnet_group" "subnet_group" {
   subnet_ids  = [var.database_subnets]
 }
 
+resource "random_string" "password" {
+  length  = 32
+  upper   = true
+  numeric = true
+  special = false
+}
+
 # storage_encrypted to encrypte data in database 
 resource "aws_db_instance" "mysql" {
   allocated_storage             = 10
@@ -12,7 +19,7 @@ resource "aws_db_instance" "mysql" {
   engine_version                = "5.7"
   instance_class                = var.instance_type
   username                      = var.username
-  password                      = var.password
+  password                      = sensitive("${random_string.password.result}")
   identifier                    = var.identifier
   parameter_group_name          = "default.mysql5.7"
   publicly_accessible           = true

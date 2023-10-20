@@ -6,10 +6,6 @@ variable "username" {
   description = "The username for the database."
 }
 
-variable "password" {
-  description = "The password for the database user."
-}
-
 variable "instance_type" {
   description = "The instance type to be used for the PostgreSQL instance."
 }

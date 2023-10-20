@@ -2,7 +2,6 @@ module "mysql" {
   source              = "../modules/mysql"
   db_name             = "wordpress"
   username            = "mysql"
-  password            = "lKpyyZfY7wmY7Faz0imzFFF"
   instance_type       = "db.t3.micro"
   identifier          = "wordpress"
   vpc_cidr            = var.vpc_cidr
