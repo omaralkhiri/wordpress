@@ -24,6 +24,10 @@ resource "aws_ecs_cluster" "cluster" {
   }
 }
 
+data "aws_secretsmanager_secret_version" "rds_credentials" {
+  secret_id = "your-secret-name"  
+}
+
 # Define container configuration
 resource "aws_ecs_task_definition" "wordpress_task" {
   family                   = "wordpress"
@@ -50,11 +54,11 @@ resource "aws_ecs_task_definition" "wordpress_task" {
       },
       {
         "name": "WORDPRESS_DB_USER",
-        "value": "${var.username}"
+        "value": "${data.aws_secretsmanager_secret_version.rds_credentials.secret["username"]}"
       },
       {
         "name": "WORDPRESS_DB_PASSWORD",
-        "value": "${var.password}"
+        "value": "${data.aws_secretsmanager_secret_version.rds_credentials.secret["password"]}"
       },
       {
         "name": "WORDPRESS_DB_NAME",

@@ -4,11 +4,8 @@ resource "aws_db_subnet_group" "subnet_group" {
   subnet_ids  = [var.database_subnets]
 }
 
-resource "random_string" "password" {
-  length  = 32
-  upper   = true
-  numeric = true
-  special = false
+data "aws_secretsmanager_secret_version" "rds_credentials" {
+  secret_id = "your-secret-name"  
 }
 
 # storage_encrypted to encrypte data in database 
@@ -18,8 +15,8 @@ resource "aws_db_instance" "mysql" {
   engine                        = "mysql"
   engine_version                = "5.7"
   instance_class                = var.instance_type
-  username                      = var.username
-  password                      = sensitive("${random_string.password.result}")
+  username                      = sensitive(data.aws_secretsmanager_secret_version.rds_credentials.secret["username"])
+  password                      = sensitive(data.aws_secretsmanager_secret_version.rds_credentials.secret["password"])
   identifier                    = var.identifier
   parameter_group_name          = "default.mysql5.7"
   publicly_accessible           = true
