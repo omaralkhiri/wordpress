@@ -76,6 +76,7 @@ resource "aws_ecs_service" "wordpress_service" {
   cluster         = aws_ecs_cluster.cluster.id
   task_definition = aws_ecs_task_definition.wordpress_task.arn
   launch_type     = "FARGATE"
+  desired_count   = 3
 
   network_configuration {
     security_groups = [aws_security_group.ecs_sg.id]
